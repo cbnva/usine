@@ -443,10 +443,9 @@ def put(local, remote, force=False):
         sys.exit(1)
     if hasattr(local, 'read'):
         bar.finish()
-    with unsudo():  # Force reset to SSH user.
-        mv(tmp, remote)
-        if user:
-            chown(user, remote)
+    mv(tmp, remote)
+    if user:
+        chown(user, remote)
 
 
 def get(remote, local):
