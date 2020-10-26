@@ -443,6 +443,8 @@ def put(local, remote, force=False):
         sys.exit(1)
     if hasattr(local, 'read'):
         bar.finish()
+    if user:
+        chown(user, tmp)
     mv(tmp, remote)
     if user:
         chown(user, remote)
