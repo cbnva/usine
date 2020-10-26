@@ -445,7 +445,8 @@ def put(local, remote, force=False):
         bar.finish()
     if user:
         with(unsudo()):
-            chown(user, tmp)
+            with(sudo()):
+                chown(user, tmp)
     mv(tmp, remote)
     if user:
         chown(user, remote)
