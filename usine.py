@@ -444,7 +444,8 @@ def put(local, remote, force=False):
     if hasattr(local, 'read'):
         bar.finish()
     if user:
-        chown(user, tmp)
+        with(unsudo()):
+            chown(user, tmp)
     mv(tmp, remote)
     if user:
         chown(user, remote)
